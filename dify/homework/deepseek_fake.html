@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepSeek - 探索人工智能的无限可能</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 导航栏 */
+        header {
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 36px;
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .cta-button {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+            color: white;
+        }
+
+        /* 英雄区域 */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(to bottom, white, #f1f5f9);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .secondary-button {
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .secondary-button:hover {
+            background-color: rgba(37, 99, 235, 0.1);
+        }
+
+        /* 产品特性 */
+        .features {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: #f8fafc;
+            border-radius: 12px;
+            padding: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(37, 99, 235, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon svg {
+            width: 30px;
+            height: 30px;
+            color: var(--primary);
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: var(--gray);
+        }
+
+        /* 演示区域 */
+        .demo {
+            padding: 80px 0;
+            background-color: #f1f5f9;
+        }
+
+        .demo-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .demo-content {
+            flex: 1;
+        }
+
+        .demo-content h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .demo-content p {
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .demo-image {
+            flex: 1;
+            background-color: #e2e8f0;
+            border-radius: 12px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 定价区域 */
+        .pricing {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .pricing-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 40px 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .pricing-card.popular {
+            border: 1px solid var(--primary);
+            position: relative;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .price span {
+            font-size: 16px;
+            color: var(--gray);
+            font-weight: 400;
+        }
+
+        .pricing-features {
+            margin-bottom: 30px;
+        }
+
+        .pricing-features li {
+            list-style: none;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .pricing-features li::before {
+            content: "✓";
+            color: var(--primary);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-about p {
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+
+        .footer-links h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-links ul li {
+            list-style: none;
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .demo-container {
+                flex-direction: column;
+            }
+
+            .demo-image {
+                width: 100%;
+                margin-top: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-buttons .cta-button,
+            .hero-buttons .secondary-button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                    DeepSeek
+                </a>
+                <div class="nav-links">
+                    <a href="#">产品</a>
+                    <a href="#">解决方案</a>
+                    <a href="#">定价</a>
+                    <a href="#">文档</a>
+                    <a href="#">关于我们</a>
+                </div>
+                <a href="#" class="cta-button">开始使用</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="container">
+            <h1>探索人工智能的无限可能</h1>
+            <p>DeepSeek提供最先进的人工智能解决方案，帮助您的业务实现数字化转型，提升效率与创新能力。</p>
+            <div class="hero-buttons">
+                <a href="#" class="cta-button">免费试用</a>
+                <a href="#" class="secondary-button">了解更多</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品特性 -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>为什么选择DeepSeek</h2>
+                <p>我们的AI平台提供全方位的解决方案，满足您的各种业务需求</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 7h-3a4 4 0 0 0-4 4v1"></path>
+                            <path d="M8 7H4a4 4 0 0 0-4 4v1"></path>
+                            <rect x="4" y="3" width="16" height="16" rx="2"></rect>
+                        </svg>
+                    </div>
+                    <h3>智能数据分析</h3>
+                    <p>利用深度学习技术，从海量数据中提取有价值的信息，为您的决策提供数据支持。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v4"></path>
+                            <path d="m16.24 7.76 2.83-2.83"></path>
+                            <path d="M18 12h4"></path>
+                            <path d="m16.24 16.24 2.83 2.83"></path>
+                            <path d="M12 18v4"></path>
+                            <path d="m7.76 16.24-2.83 2.83"></path>
+                            <path d="M6 12H2"></path>
+                            <path d="m7.76 7.76-2.83-2.83"></path>
+                        </svg>
+                    </div>
+                    <h3>自然语言处理</h3>
+                    <p>先进的NLP技术，支持多语言理解和生成，提升您的沟通效率。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v4"></path>
+                            <path d="m16.24 7.76 2.83-2.83"></path>
+                            <path d="M18 12h4"></path>
+                            <path d="m16.24 16.24 2.83 2.83"></path>
+                            <path d="M12 18v4"></path>
+                            <path d="m7.76 16.24-2.83 2.83"></path>
+                            <path d="M6 12H2"></path>
+                            <path d="m7.76 7.76-2.83-2.83"></path>
+                        </svg>
+                    </div>
+                    <h3>计算机视觉</h3>
+                    <p>强大的图像识别和处理能力，为您的业务提供视觉智能解决方案。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v4"></path>
+                            <path d="m16.24 7.76 2.83-2.83"></path>
+                            <path d="M18 12h4"></path>
+                            <path d="m16.24 16.24 2.83 2.83"></path>
+                            <path d="M12 18v4"></path>
+                            <path d="m7.76 16.24-2.83 2.83"></path>
+                            <path d="M6 12H2"></path>
+                            <path d="m7.76 7.76-2.83-2.83"></path>
+                        </svg>
+                    </div>
+                    <h3>预测分析</h3>
+                    <p>基于历史数据和机器学习算法，预测未来趋势，帮助您提前布局。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v4"></path>
+                            <path d="m16.24 7.76 2.83-2.83"></path>
+                            <path d="M18 12h4"></path>
+                            <path d="m16.24 16.24 2.83 2.83"></path>
+                            <path d="M12 18v4"></path>
+                            <path d="m7.76 16.24-2.83 2.83"></path>
+                            <path d="M6 12H2"></path>
+                            <path d="m7.76 7.76-2.83-2.83"></path>
+                        </svg>
+                    </div>
+                    <h3>自动化流程</h3>
+                    <p>智能自动化重复性工作，释放人力资源，提高工作效率。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v4"></path>
+                            <path d="m16.24 7.76 2.83-2.83"></path>
+                            <path d="M18 12h4"></path>
+                            <path d="m16.24 16.24 2.83 2.83"></path>
+                            <path d="M12 18v4"></path>
+                            <path d="m7.76 16.24-2.83 2.83"></path>
+                            <path d="M6 12H2"></path>
+                            <path d="m7.76 7.76-2.83-2.83"></path>
+                        </svg>
+                    </div>
+                    <h3>安全可靠</h3>
+                    <p>企业级安全防护，确保您的数据和隐私得到最高级别的保护。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 演示区域 -->
+    <section class="demo">
+        <div class="container">
+            <div class="demo-container">
+                <div class="demo-content">
+                    <h2>体验DeepSeek的强大功能</h2>
+                    <p>我们的AI平台提供直观的用户界面和强大的API接口，无论是技术人员还是业务人员都能轻松上手。</p>
+                    <a href="#" class="cta-button">查看演示</a>
+                </div>
+                <div class="demo-image">
+                    <p>AI平台界面演示</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 定价区域 -->
+    <section class="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>灵活的定价方案</h2>
+                <p>选择适合您业务需求的方案，从小型企业到大型企业，我们都有解决方案</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>基础版</h3>
+                    <div class="price">$29<span>/月</span></div>
+                    <ul class="pricing-features">
+                        <li>基础AI功能</li>
+                        <li>每月1000次API调用</li>
+                        <li>标准数据处理</li>
+                        <li>电子邮件支持</li>
+                        <li>社区论坛访问</li>
+                    </ul>
+                    <a href="#" class="secondary-button" style="width: 100%; text-align: center;">选择方案</a>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="popular-badge">最受欢迎</div>
+                    <h3>专业版</h3>
+                    <div class="price">$99<span>/月</span></div>
+                    <ul class="pricing-features">
+                        <li>高级AI功能</li>
+                        <li>每月10000次API调用</li>
+                        <li>高级数据处理</li>
+                        <li>优先电子邮件支持</li>
+                        <li>每周技术更新</li>
+                        <li>基础分析报告</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="width: 100%; text-align: center;">选择方案</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>企业版</h3>
+                    <div class="price">$499<span>/月</span></div>
+                    <ul class="pricing-features">
+                        <li>全部AI功能</li>
+                        <li>无限API调用</li>
+                        <li>定制数据处理</li>
+                        <li>24/7专属支持</li>
+                        <li>每日技术更新</li>
+                        <li>高级分析报告</li>
+                        <li>专属客户经理</li>
+                    </ul>
+                    <a href="#" class="secondary-button" style="width: 100%; text-align: center;">联系我们</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">DeepSeek</a>
+                    <p>我们致力于提供最先进的人工智能解决方案，帮助企业实现数字化转型和创新增长。</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>产品</h4>
+                    <ul>
+                        <li><a href="#">AI平台</a></li>
+                        <li><a href="#">API文档</a></li>
+                        <li><a href="#">SDK下载</a></li>
+                        <li><a href="#">更新日志</a></li>
+                        <li><a href="#">路线图</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>解决方案</h4>
+                    <ul>
+                        <li><a href="#">金融科技</a></li>
+                        <li><a href="#">医疗健康</a></li>
+                        <li><a href="#">零售电商</a></li>
+                        <li><a href="#">制造业</a></li>
+                        <li><a href="#">教育科技</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>公司</h4>
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">团队</a></li>
+                        <li><a href="#">职业机会</a></li>
+                        <li><a href="#">新闻中心</a></li>
+                        <li><a href="#">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>资源</h4>
+                    <ul>
+                        <li><a href="#">博客</a></li>
+                        <li><a href="#">案例研究</a></li>
+                        <li><a href="#">白皮书</a></li>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">帮助中心</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 DeepSeek Technologies. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
