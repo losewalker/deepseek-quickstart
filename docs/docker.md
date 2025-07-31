@@ -35,7 +35,9 @@ docker --version
 # 预期输出示例: Docker version 24.0.7, build afdd53b
 ```
 
-## 2. 安装 Docker Compose (方法一：官方二进制)
+## 2. 安装 Docker Compose 
+
+### **(方法一：官方二进制)**
 
 ### 获取最新版本号
 
@@ -63,6 +65,43 @@ docker-compose --version
 # 预期输出示例: Docker Compose version v2.26.1
 ```
 
+### **(方法二：离线安装)**
+
+### 手动获取二级制文件包
+
+选择目标版本，按照服务器的相关信息选择适合的二进制包，地址如下：
+
+```bash
+https://github.com/docker/compose/releases
+```
+
+### 将下载好的二进制包上传到服务器指定目录
+
+```bash
+root@iZ2zedyqxcxkmddrcif1m1Z:/usr/local/bin# 
+```
+
+### 修改文件名
+
+注意：是对二进制包进行改名！！！！！
+
+```bash
+ mv docker-compose-linux-x86_64 docker-compose
+```
+
+### 授予执行权限
+
+```bash
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
+### 验证安装
+
+```bash
+docker-compose --version
+# 预期输出示例: Docker Compose version v2.38.1
+```
+
 ## 3. 测试 Docker Compose
 
 ### 创建示例项目
@@ -76,10 +115,10 @@ mkdir docker-compose-demo && cd docker-compose-demo
 ```yaml
 version: '3'
 services:
-  web:
-    image: nginx:alpine
-    ports:
-      - "8080:80"
+    web:
+        image: nginx:alpine
+        ports:
+          - "8080:8080"
 ```
 
 ### 启动服务
@@ -107,3 +146,8 @@ curl localhost:8080  # 应返回 Nginx 欢迎页面
 > - 如果遇到权限问题，请确认用户已加入 docker 组  
 > - 国内用户可考虑使用镜像源加速下载（如阿里云镜像）  
 > - Docker Compose v2+ 需要 Docker 20.10+ 版本支持
+
+### 5.Docker换源
+
+待续
+
